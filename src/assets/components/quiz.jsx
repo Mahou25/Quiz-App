@@ -1,8 +1,6 @@
 /* eslint-disable react-refresh/only-export-components */
 import React, { useState } from 'react';
 
-import Results from './results';
-
 function Quiz() {
     const questionBank = [
         {
@@ -50,14 +48,21 @@ function Quiz() {
         }
     }
 
-        function goToPrev() {
+    function goToPrev() {
         if (currentQuestion > 0) {
-           setCurrentQuestion(currentQuestion - 1);
+            setCurrentQuestion(currentQuestion - 1);
         }    
+    }
+    
+    function restartQuiz() {
+       setUsersAnswers(initialAnswers);
+       setCurrentQuestion(0);
+       setIsQuizFinished(false);
+
     }
 
     if (isQuizFinished) {
-       return Results;
+       return <Results userAnswers={userAnswers} questionBank={questionBank} restartQuiz={restartQuiz} /> ;
     }
 
     return (
