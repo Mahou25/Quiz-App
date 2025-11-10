@@ -4,6 +4,7 @@ import './index.css';
 // import reactLogo from './assets/react.svg'
 // import viteLogo from '/vite.svg'
 import Quiz from './assets/components/quiz';
+import Results from './assets/components/results';
 
 function App() {
   
@@ -15,6 +16,7 @@ function App() {
       </h1>
 
       <Quiz/>
+      <Results/>
     </div>
   )
 }

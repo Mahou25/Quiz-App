@@ -1,6 +1,8 @@
 /* eslint-disable react-refresh/only-export-components */
 import React, { useState } from 'react';
 
+import Results from './results';
+
 function Quiz() {
     const questionBank = [
         {
@@ -20,7 +22,8 @@ function Quiz() {
         },
     ];
 
-
+    //Lets create a state that will track if we finish a quiz or not
+    const [isQuizFinished, setIsQuizFinished] = useState(false);
 
     // const [optionSelected, setOptionSelected] = useState("None");
     const initialAnswers = [null, null, null];
@@ -40,8 +43,10 @@ function Quiz() {
     }
 
     function goToNext() {
-        if (currentQuestion < 2) {
-           setCurrentQuestion(currentQuestion + 1);
+        if (currentQuestion === questionBank.length - 1) {
+           setIsQuizFinished(true)
+        }else{
+            setCurrentQuestion(currentQuestion + 1);
         }
     }
 
@@ -51,7 +56,9 @@ function Quiz() {
         }    
     }
 
-
+    if (isQuizFinished) {
+       return Results;
+    }
 
     return (
         <div>
